@@ -1,41 +1,101 @@
-// Напишіть скрипт, який переводить години в секунди і має робити наступне:
+// Частина №1
 
-// запитати у користувача кількість годин;
-// порахувати, скільки секунд у цій кількості годин;
-// записати обчислене значення у змінну;
-// вивести цю змінну користувачеві через alert.
+// Створити скрипт яки повинен виконувати наступне:
 
-const inputHours = document.getElementById("inputHours") as HTMLInputElement;
+// запитати у користувача рік народження;
+// запитати в нього, в якому місті він живе;
+// запитати його улюблений вид спорту.
+// При натисканні на ОК показуємо вікно, де має бути відображена наступна інформація:
 
-const btnSubmit = document.getElementById("btnSubmit") as HTMLButtonElement;
+// його вік;
+// якщо користувач вкаже Київ, Вашингтон чи Лондон, то
+// показати йому повідомлення - "Ти живеш у столиці..." і на місце точок підставляємо країну,
+// столицею якої є місто. Інакше показуємо йому “ти живеш у місті…”, де місце точок – введене місто.
 
-const form = document.getElementById("form") as HTMLFormElement;
+// Частина №2
 
-function convertHours(e: Event) {
-  e.preventDefault();
+// Вибираємо самі три види спорту та три чемпіони у цих видах. Відповідно,
+// якщо користувач вкаже один із цих видів спорту, то показуємо йому повідомлення
+// “Круто! Хочеш стати …? і підставляємо на місце точок ім'я та прізвище чемпіона.
 
-  const value:string = inputHours.value.trim();
+// Все це має бути відображено в одному вікні (аллерті).
 
-  const hours = +value;
+// Якщо в якомусь випадку він не захоче вводити інформацію і натисне Скасувати,
+// показати йому повідомлення – “Шкода, що Ви не захотіли ввести свій(ю) …”
+// і вказуємо, що він не захотів вводити – дату народження, місто чи вид спорту .
 
-  if (hours <= 0 || isNaN(hours)) {
-    alert("Введіть число!, яке більше 0");
-    return;
+let age: number;
+let capital: string;
+let champions: string;
+
+do {
+  age = Number(prompt("Введіть рік народження: (only numbers):"));
+  if (isNaN(age)){
+    alert(`ви вказали літери або пробіли, а можна тільки цифри`)
   }
+} while (isNaN(age))
 
-  function Str(n: number): string {
-    if (n === 1) {
-      return "Годині";
-    } else {
-      return "Годинах";
-    }
-  }
-
-  const message: string = Str(hours);
-
-  const result: number = hours * 60 * 60;
-
-  alert(`В ${value} ${message} ${result} секунд`);
+if (!age) {
+  alert('шкода що ви не вказали свій вік')
 }
 
-form.addEventListener("submit", convertHours);
+
+let city: string | null = prompt("В якому місті ви живете? (only Eng): ");
+
+if (!city || city.trim() === "") {
+  alert("шкода що ви не вказали своє місто");
+}
+
+
+switch (city) {
+  case "Kyiv":
+    capital = "Ти живеш у країні : Ukraine";
+    break;
+
+  case "Washington":
+    capital = "Ти живеш у країні : USA";
+    break;
+
+  case "London":
+    capital = "Ти живеш у країні : UK";
+    break;
+
+  case "Berlin":
+    capital = "Ти живеш у країні : Germany";
+    break;
+
+  default:
+    capital = `Ти живеш у місті : ${city}`
+}
+
+
+let sport: string | null = prompt("Який ваш улюблений вид спорту? (only Eng):");
+
+if (!sport || sport.trim() === "") {
+  alert("шкода що ви не вказали свій улюблений вид спорту");
+}
+
+switch (sport) {
+  case "football":
+    champions = "Круто! хочеш стати як, Мессі";
+    break;
+
+  case "basketball":
+    champions = "Круто! хочеш стати як, Майкл Джордан";
+    break;
+
+  case "box":
+  case "boxing":
+    champions = "Круто! хочеш стати як, Майк Тайсон";
+    break;
+
+  default:
+    champions = `Твій улюблений вид спорту : ${sport}`
+}
+
+
+
+
+alert(`${age ? `Твій вік : ${age}` : 'ви не вказали ваш вік!'} 
+  \n${city ? `${capital}` : 'ви не вказали своє місто!'}
+  \n${sport ? `${champions}` : 'ви не казали свій улюблений вид спорту!'}`);
