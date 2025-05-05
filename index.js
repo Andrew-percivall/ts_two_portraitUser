@@ -66,4 +66,4 @@ switch (sport) {
     default:
         champions = "\u0422\u0432\u0456\u0439 \u0443\u043B\u044E\u0431\u043B\u0435\u043D\u0438\u0439 \u0432\u0438\u0434 \u0441\u043F\u043E\u0440\u0442\u0443 : ".concat(sport);
 }
-alert("".concat(age ? "\u0422\u0432\u0456\u0439 \u0432\u0456\u043A : ".concat(age) : 'ви не вказали ваш вік!', " \n  \n").concat(city ? "".concat(capital) : 'ви не вказали своє місто!', "\n  \n").concat(sport ? "".concat(champions) : 'ви не казали свій улюблений вид спорту!'));
+alert("".concat(age ? "\u0422\u0432\u0456\u0439 \u0432\u0456\u043A : ".concat(age) : 'ви не вказали свій вік!', " \n  \n").concat(city ? "".concat(capital) : 'ви не вказали своє місто!', "\n  \n").concat(sport ? "".concat(champions) : 'ви не казали свій улюблений вид спорту!'));
